@@ -1,0 +1,17 @@
+package:
+  name: flann
+  version: 1.8.4
+
+source:
+  fn: flann-1.8.4-src.zip
+  url: http://people.cs.ubc.ca/~mariusm/uploads/FLANN/flann-1.8.4-src.zip
+
+
+requirements:
+  build:
+    - cmake [win]
+    - hdf5
+  
+about:
+  home: http://assimp.sourceforge.net/
+  license: BSD
