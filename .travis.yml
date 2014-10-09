@@ -1,12 +1,18 @@
+env:
+  global:
+    - BINSTAR_USER: menpo
+    - PYTHON_VERSION: 2.7
+
 install:
-- wget https://raw.githubusercontent.com/jabooth/traviconda/master/traviconda.py -O traviconda.py
-- python traviconda.py setup 2 --channel menpo
-- export PATH=/home/travis/miniconda/bin:$PATH
+- wget https://raw.githubusercontent.com/jabooth/condaci/v0.2.0/condaci.py -O condaci.py
+- python condaci.py setup $PYTHON_VERSION --channel $BINSTAR_USER
+- export PATH=$HOME/miniconda/bin:$PATH
 
 script:
-- python traviconda.py auto ./conda --binstaruser menpo --binstarchannel main --binstarkey $BINSTAR_KEY --pypiuser $PYPI_USERNAME  --pypipassword $PYPI_PASSWORD
+- python condaci.py auto ./conda --binstarchannel main --binstaruser $BINSTAR_USER --binstarkey $BINSTAR_KEY
 
 notifications:
+  slack: menpo:19gyWImMkOfCj0iDAgTbDlDA
   email: false
   webhooks:
     urls:
@@ -14,4 +20,3 @@ notifications:
     on_success: always
     on_failure: always
     on_start: never
-
